@@ -9,6 +9,14 @@ using namespace std;
 
 string phonetic::find(string text,string s) {
  
+    if(s.size()==0)
+    {
+        throw exception();
+    }
+    else if(s.find(" ")!=string::npos)
+    {
+        throw exception();
+    }
     std::string delim = " ";
 
     auto start = 0U;
@@ -47,9 +55,8 @@ string phonetic::find(string text,string s) {
       std::string temp_s = s;
      transform(temp_h.begin(), temp_h.end(), temp_h.begin(), ::tolower); 
      transform(temp_s.begin(), temp_s.end(), temp_s.begin(), ::tolower);
-      //cout<<temp_h<<endl;
-     // cout<<temp_s<<endl;
-       
+      
+   
 
       if (temp_h.size()!=temp_s.size()){
         
