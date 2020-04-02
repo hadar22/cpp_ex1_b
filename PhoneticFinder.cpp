@@ -21,20 +21,23 @@ string phonetic::find(string text,string s) {
 
     auto start = 0U;
     auto end = text.find(delim);
-  
+// let's go over the whole string
     while (end != std::string::npos )
     {
+      // split the first word
         std::string h = text.substr(start, end - start) ;
-       
+
+       //check if the words equals
        if (phonetic::equals(h,s)) {
          return h;
          break;
        }
- 
+        // move on to the next word
         start = end + delim.length();
         end = text.find(delim, start+1);
         
     }
+    //last word
     std::string h = text.substr(start, end - start) ;
     
     if (phonetic::equals(h,s)) {
@@ -53,6 +56,7 @@ string phonetic::find(string text,string s) {
     
       std::string temp_h =h;
       std::string temp_s = s;
+      // 
      transform(temp_h.begin(), temp_h.end(), temp_h.begin(), ::tolower); 
      transform(temp_s.begin(), temp_s.end(), temp_s.begin(), ::tolower);
       
@@ -64,10 +68,10 @@ string phonetic::find(string text,string s) {
       }
       else{ 
        for (int i=0; i<s.size();i++){
-       // cout <<"po"<<endl;
+       
         if(temp_s[i]==temp_h[i]) continue;
         else{
-          switch(temp_s[i]){
+          switch( temp_s[i]){
             case 'v':
               if(temp_h[i]!='w') return false;
               break;
